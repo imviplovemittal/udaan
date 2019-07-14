@@ -70,4 +70,11 @@ class ViewModel {
     var data = jsonDecode(response.body);
     return data;
   }
+
+  Future<dynamic> getWorkerTasks(int workerId) async {
+    final url = baseurl + "get-tasks-for-worker/" + workerId.toString();
+    var response = await http.get(url);
+    var data = jsonDecode(response.body);
+    return data;
+  }
 }

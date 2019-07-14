@@ -7,4 +7,5 @@ class UIData {
   static const String allocateTask = "/allocate_task";
   static const String addTask = "/add_task";
   static const String addWorker = "/add_worker";
+  static const String workerTasks = "/worker_tasks";
 }

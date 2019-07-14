@@ -3,8 +3,10 @@ import 'package:udaan_viplove/ui/screens/add_tasks.dart';
 import 'package:udaan_viplove/ui/screens/add_workers.dart';
 import 'package:udaan_viplove/ui/screens/allocate_tasks.dart';
 import 'package:udaan_viplove/ui/screens/home.dart';
+import 'package:udaan_viplove/ui/screens/login.dart';
 import 'package:udaan_viplove/ui/screens/select_task.dart';
 import 'package:udaan_viplove/ui/screens/select_wroker.dart';
+import 'package:udaan_viplove/ui/screens/worker_tasks.dart';
 
 import 'utils/uidata.dart';
 
@@ -22,11 +24,12 @@ class MyApp extends StatelessWidget {
         UIData.allocateTask: (BuildContext context) => AllocateTasks(),
         UIData.addTask: (BuildContext context) => AddTasks(),
         UIData.addWorker: (BuildContext context) => AddWorkers(),
+        UIData.workerTasks: (BuildContext context) => WorkerTasks(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
