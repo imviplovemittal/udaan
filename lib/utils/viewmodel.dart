@@ -77,4 +77,11 @@ class ViewModel {
     var data = jsonDecode(response.body);
     return data;
   }
+
+  Future<dynamic> getAllTasks() async {
+    final url = baseurl + "get-all-tasks";
+    var response = await http.get(url);
+    var data = jsonDecode(response.body);
+    return data;
+  }
 }

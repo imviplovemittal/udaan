@@ -39,6 +39,77 @@ class _HomePageState extends State<HomePage> {
               })
         ],
       ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            DrawerHeader(
+              curve: ElasticOutCurve(),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Colors.indigo,
+                Colors.indigoAccent,
+                Colors.indigo[400]
+              ])),
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.deepOrangeAccent,
+                      child: Icon(
+                        Icons.person,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Admin",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Assets",
+                style: TextStyle(fontSize: 16),
+              ),
+              selected: true,
+              leading: Icon(Icons.home),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text(
+                "Ongoing Tasks",
+                style: TextStyle(fontSize: 16),
+              ),
+              leading: Icon(Icons.build),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, UIData.allTasks);
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text(
+                "Log Out",
+                style: TextStyle(fontSize: 16),
+              ),
+              leading: Icon(Icons.exit_to_app),
+              onTap: () {
+                Navigator.pushReplacementNamed(context, UIData.loginRoute);
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: FutureBuilder<AssetModel>(
           future: apiCall(),

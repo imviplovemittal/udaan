@@ -62,6 +62,12 @@ class _SelectTaskState extends State<SelectTask> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, UIData.addTask);
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 

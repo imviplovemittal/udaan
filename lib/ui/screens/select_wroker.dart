@@ -38,8 +38,9 @@ class _SelectWorkerState extends State<SelectWorker> {
           await viewModel.allocateTask(taskId, assetId, workerId, selectedDate);
       if (response["status"] == "success") {
         Fluttertoast.showToast(msg: response["data"]);
-        Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
-      } else{
+        Navigator.popUntil(
+            context, ModalRoute.withName(Navigator.defaultRouteName));
+      } else {
         Fluttertoast.showToast(msg: response["data"]);
       }
     }
@@ -114,6 +115,12 @@ class _SelectWorkerState extends State<SelectWorker> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, UIData.addWorker);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

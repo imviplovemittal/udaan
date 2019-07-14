@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:udaan_viplove/utils/uidata.dart';
 import 'package:udaan_viplove/utils/utils.dart';
 import 'package:udaan_viplove/utils/viewmodel.dart';
 
-class WorkerTasks extends StatefulWidget {
+class AllTasks extends StatefulWidget {
   @override
-  _WorkerTasksState createState() => _WorkerTasksState();
+  _AllTasksState createState() => _AllTasksState();
 }
 
-class _WorkerTasksState extends State<WorkerTasks> {
+class _AllTasksState extends State<AllTasks> {
   var viewModel = ViewModel();
   dynamic response;
 
@@ -16,68 +15,8 @@ class _WorkerTasksState extends State<WorkerTasks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your Tasks : ID 1"),
+        title: Text("All Tasks"),
         backgroundColor: Colors.indigo,
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            DrawerHeader(
-              curve: ElasticOutCurve(),
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Colors.indigo,
-                    Colors.indigoAccent,
-                    Colors.indigo[400]
-                  ])),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.deepOrangeAccent,
-                      child: Icon(
-                        Icons.person,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Worker Id: 1",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text(
-                "Your Tasks",
-                style: TextStyle(fontSize: 16),
-              ),
-              selected: true,
-              leading: Icon(Icons.home),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "Log Out",
-                style: TextStyle(fontSize: 16),
-              ),
-              leading: Icon(Icons.exit_to_app),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, UIData.loginRoute);
-              },
-            ),
-          ],
-        ),
       ),
       body: Center(
         child: FutureBuilder<dynamic>(
@@ -120,6 +59,8 @@ class _WorkerTasksState extends State<WorkerTasks> {
                                     ),
                                     Text(details["asset_name"],
                                         style: TextStyle(fontSize: 20)),
+                                    Text("Done by: ${details["worker_name"]}",
+                                        style: TextStyle(fontSize: 18)),
                                     Row(
                                       children: <Widget>[
                                         Text("Deadline: ",
@@ -158,7 +99,7 @@ class _WorkerTasksState extends State<WorkerTasks> {
   }
 
   Future<dynamic> apiCall() async {
-    var response = await viewModel.getWorkerTasks(1);
+    var response = await viewModel.getAllTasks();
     return response;
   }
 }
