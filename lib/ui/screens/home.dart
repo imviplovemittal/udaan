@@ -151,7 +151,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, UIData.addTask);
+                      },
                     ),
                     FlatButton(
                       child: Column(
@@ -164,7 +166,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, UIData.addWorker);
+                      },
                     ),
                     FlatButton(
                       child: Column(
