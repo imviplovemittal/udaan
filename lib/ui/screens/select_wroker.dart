@@ -24,9 +24,9 @@ class _SelectWorkerState extends State<SelectWorker> {
     Colors.teal
   ];
 
-  Future<Null> _selectDate(BuildContext context, int workerId) async {
+  Future<Null> _selectDate(BuildContext context1, int workerId) async {
     final DateTime picked = await showDatePicker(
-        context: context,
+        context: context1,
         initialDate: selectedDate,
         firstDate: selectedDate,
         lastDate: DateTime(2101));
@@ -38,8 +38,8 @@ class _SelectWorkerState extends State<SelectWorker> {
           await viewModel.allocateTask(taskId, assetId, workerId, selectedDate);
       if (response["status"] == "success") {
         Fluttertoast.showToast(msg: response["data"]);
-        Navigator.popUntil(
-            context, ModalRoute.withName(Navigator.defaultRouteName));
+        Navigator.pushNamedAndRemoveUntil(
+            context, UIData.home, (route) => false);
       } else {
         Fluttertoast.showToast(msg: response["data"]);
       }
